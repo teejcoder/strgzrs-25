@@ -4,6 +4,8 @@ type Props = {}
 
 export default function Footer({}: Props) {
   return (
-    <div>footer</div>
+    <footer className="py-24 px-6 border-t">
+      footer, bae
+    </footer>
   )
 }

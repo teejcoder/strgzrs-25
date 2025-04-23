@@ -1,6 +1,36 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 
+.container {
+  max-width: 75rem;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+body {
+  line-height: 1.6;
+  font-size: 1rem; 
+}
+h1, h2, h3 {
+  line-height: 1.3;
+}
+h1 {
+  font-size: 2.5rem;
+  letter-spacing: -0.03125rem;
+}
+h2 {
+  font-size: 2rem;
+  letter-spacing: -0.015625rem;
+}
+h3 {
+  font-size: 1.75rem;
+  letter-spacing: -0.015625rem;
+}
+.uppercase {
+  letter-spacing: 0.0625rem;
+}
+
 .dark {
   --background: oklch(0.145 0 0);
   --foreground: oklch(0.985 0 0);
