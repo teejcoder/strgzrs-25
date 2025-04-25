@@ -2,15 +2,15 @@
 import React, { useState, useEffect } from "react";
 import { LayoutGrid } from "@/components/ui/layout-grid";
 import { GetData } from "@/api/get-data";
-import Image from "next/image";
+import { StarsBackground } from "./ui/stars-background";
 
-export function GridDemo() {
+export function ImageGrid() {
   const [data, setData] = useState<any[]>([]);
   const [displayedData, setDisplayedData] = useState<any[]>([]);
   const [error, setError] = useState<unknown>();
   const [loading, setLoading] = useState<boolean>(true);
   const [page, setPage] = useState<number>(1);
-  const itemsPerPage = 12; // Show fewer items at once
+  const itemsPerPage = 9; // Show fewer items at once
 
   // fetch data from api/get-data
   useEffect(() => {
@@ -62,7 +62,7 @@ export function GridDemo() {
   }));
 
   return (
-    <div className="w-full py-16">
+    <div className="w-full pb-16">
       {loading ? (
         <div className="flex justify-center items-center min-h-[50vh]">
           <p className="text-white">Loading astronomy pictures...</p>

@@ -1,14 +1,13 @@
-import { GridDemo } from "@/components/grid-demo";
+import { ImageGrid } from "@/components/image-grid";
 import { ShootingStars } from "@/components/ui/shooting-stars"
 import { StarsBackground } from "@/components/ui/stars-background"
 import { Star } from "lucide-react"
 
 export default function Home() {
   return (
-    <div className="relative">
+    <div className="">
       <StarsBackground
         starDensity={0.0015}
-        allStarsTwinkle={true}
       />
       <ShootingStars/>
       
@@ -19,7 +18,7 @@ export default function Home() {
       </section>
       
       <section>
-        <GridDemo/>
+        <ImageGrid/>
       </section>
     </div>
   );
