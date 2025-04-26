@@ -1,7 +1,6 @@
 import { ImageGrid } from "@/components/image-grid";
 import { ShootingStars } from "@/components/ui/shooting-stars"
 import { StarsBackground } from "@/components/ui/stars-background"
-import { Star } from "lucide-react"
 
 export default function Home() {
   return (

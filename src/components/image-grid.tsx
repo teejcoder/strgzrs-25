@@ -2,7 +2,6 @@
 import React, { useState, useEffect } from "react";
 import { LayoutGrid } from "@/components/ui/layout-grid";
 import { GetData } from "@/api/get-data";
-import { StarsBackground } from "./ui/stars-background";
 
 export function ImageGrid() {
   const [data, setData] = useState<any[]>([]);
@@ -10,7 +9,7 @@ export function ImageGrid() {
   const [error, setError] = useState<unknown>();
   const [loading, setLoading] = useState<boolean>(true);
   const [page, setPage] = useState<number>(1);
-  const itemsPerPage = 9; // Show fewer items at once
+  const itemsPerPage = 5; // Show fewer items at once
 
   // fetch data from api/get-data
   useEffect(() => {
