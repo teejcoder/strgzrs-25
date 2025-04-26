@@ -5,23 +5,22 @@ import { GetData } from "@/api/get-data";
 
 export function ImageGrid() {
   const [data, setData] = useState<any[]>([]);
-  const [displayedData, setDisplayedData] = useState<any[]>([]);
-  const [error, setError] = useState<unknown>();
   const [loading, setLoading] = useState<boolean>(true);
-  const [page, setPage] = useState<number>(1);
-  const itemsPerPage = 5; // Show fewer items at once
+  const [error, setError] = useState<string | null>(null);
 
-  // fetch data from api/get-data
+  // Fetch data from the API
   useEffect(() => {
     const fetchData = async () => {
       try {
         setLoading(true);
-        const result = await GetData({});
-        setData(result);
-        // Initially display only the first batch of items
-        setDisplayedData(result.slice(0, itemsPerPage));
-      } catch(error) {
-        setError(error);
+        const result = await GetData();
+        if (Array.isArray(result)) {
+          setData(result);
+        } else if (result.error) {
+          setError(result.error);
+        }
+      } catch (err) {
+        setError("Failed to load data.");
       } finally {
         setLoading(false);
       }
@@ -29,28 +28,15 @@ export function ImageGrid() {
     fetchData();
   }, []);
 
-  // Load more data when page changes
-  useEffect(() => {
-    const end = page * itemsPerPage;
-    setDisplayedData(data.slice(0, end));
-  }, [page, data]);
-
-  // Function to load more items
-  const loadMore = () => {
-    if (page * itemsPerPage < data.length) {
-      setPage(page + 1);
-    }
-  };
-
-  const cards = displayedData.map((item, index) => ({
+  const cards = data.map((item, index) => ({
     id: index,
     content: (
       <div>
         <p className="font-bold md:text-4xl text-xl text-white">{item.title}</p>
         <span className="text-neutral-300">{item.date}</span>
         <p className="font-normal text-base my-4 max-w-lg text-neutral-200">
-          {item.explanation?.length > 150 
-            ? `${item.explanation.substring(0, 150)}...` 
+          {item.explanation?.length > 150
+            ? `${item.explanation.substring(0, 150)}...`
             : item.explanation}
         </p>
       </div>
@@ -66,20 +52,12 @@ export function ImageGrid() {
         <div className="flex justify-center items-center min-h-[50vh]">
           <p className="text-white">Loading astronomy pictures...</p>
         </div>
-      ) : displayedData.length > 0 ? (
-        <>
-          <LayoutGrid cards={cards} />
-          {page * itemsPerPage < data.length && (
-            <div className="flex justify-center mt-8">
-              <button 
-                onClick={loadMore}
-                className="px-6 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition"
-              >
-                Load More
-              </button>
-            </div>
-          )}
-        </>
+      ) : error ? (
+        <div className="flex justify-center items-center min-h-[50vh]">
+          <p className="text-red-500">{error}</p>
+        </div>
+      ) : data.length > 0 ? (
+        <LayoutGrid cards={cards} />
       ) : (
         <div className="flex justify-center items-center min-h-[50vh]">
           <p className="text-white">No astronomy pictures available.</p>
