@@ -3,12 +3,12 @@ import { NextApiRequest, NextApiResponse } from "next";
 const NASA_API = process.env.NEXT_PUBLIC_NASA_API;
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
-  const days = 3;
+  const days = 30;
 
   try {
     const today = new Date();
     const yesterday = new Date(today);
-    yesterday.setDate(today.getDate() - 2);
+    yesterday.setDate(today.getDate() - 1);
 
     const pastDate = new Date(yesterday);
     pastDate.setDate(yesterday.getDate() - Number(days));

@@ -41,7 +41,7 @@ export function ImageGrid() {
         </p>
       </div>
     ),
-    className: index % 3 === 0 ? "md:col-span-2" : "",
+    className: index % 4 === 0 || index % 4 === 3 ? "md:col-span-2" : "",
     thumbnail: item.url && item.url.trim() !== "" ? item.url : "/placeholder.jpg",
     mediaType: item.media_type || "image",
   }));

@@ -64,7 +64,7 @@ const ImageComponent = ({ card }: { card: Card }) => {
       layoutId={`image-${card.id}-image`}
       src={card.thumbnail}
       height="500"
-      width="500"
+      width={"500"}
       className={cn(
         "object-cover object-top absolute h-full w-full rounded-2xl border border-white/70 transition duration-200"
       )}
