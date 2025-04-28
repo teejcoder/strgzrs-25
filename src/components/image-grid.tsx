@@ -39,6 +39,8 @@ export function ImageGrid() {
             ? `${item.explanation.substring(0, 150)}...`
             : item.explanation}
         </p>
+        <p>{item.copyright ? <a href={item.url} className="underline" target="_blank">{item.copyright}</a> : ""}</p>
+        <p>{item.url ? <a href={item.url} className="underline" target="_blank">Source</a> : ""}</p>
       </div>
     ),
     className: index % 4 === 0 || index % 4 === 3 ? "md:col-span-2" : "",

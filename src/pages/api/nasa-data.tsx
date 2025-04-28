@@ -2,8 +2,19 @@ import { NextApiRequest, NextApiResponse } from "next";
 
 const NASA_API = process.env.NEXT_PUBLIC_NASA_API;
 
+// In-memory cache
+let cache: { data: any; timestamp: number } | null = null;
+const CACHE_TTL = 60 * 60 * 1000; // 1 hour in milliseconds
+
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   const days = 30;
+  const now = Date.now();
+
+  // Serve from cache if valid
+  if (cache && now - cache.timestamp < CACHE_TTL) {
+    console.log('Data served from CACHE >> ')
+    return res.status(200).json(cache.data);
+  }
 
   try {
     const today = new Date();
@@ -24,6 +35,10 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     }
 
     const data = await response.json();
+    console.log(`fetched ${data.length} items from API >>`);
+    // Update cache
+    cache = { data, timestamp: now };
+
     res.status(200).json(data);
   } catch (error) {
     console.error("Error fetching data from NASA API:", error);

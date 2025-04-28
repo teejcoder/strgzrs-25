@@ -34,7 +34,7 @@ export const LayoutGrid = ({ cards }: { cards: Card[] }) => {
               card.className,
               "relative overflow-hidden",
               selected?.id === card.id
-                ? "rounded-lg cursor-pointer fixed inset-0 h-[80vh] w-[80vw] max-w-4xl m-auto z-50 flex justify-center items-center flex-wrap flex-col"
+                ? "rounded-lg fixed inset-0 h-[80vh] w-[80vw] max-w-4xl m-auto z-50 flex justify-center items-center flex-wrap flex-col"
                 : lastSelected?.id === card.id
                 ? "z-40 transparent rounded-xl h-full w-full"
                 : "rounded-xl h-full w-full"
@@ -64,9 +64,9 @@ const ImageComponent = ({ card }: { card: Card }) => {
       layoutId={`image-${card.id}-image`}
       src={card.thumbnail}
       height="500"
-      width={"500"}
+      width="500"
       className={cn(
-        "object-cover object-top absolute h-full w-full rounded-2xl border border-white/70 transition duration-200"
+        "object-cover absolute h-full w-full rounded-2xl border border-white/70 transition duration-200"
       )}
       alt="thumbnail"
     />

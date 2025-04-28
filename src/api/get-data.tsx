@@ -20,7 +20,6 @@ export const GetData = async () => {
         }))
       : [];
     
-    console.log(`fetched ${processedData.length} items from Processed data from get-data >>`, processedData);
     return processedData.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
   } catch(err){
     console.error("Error fetching data from NASA API:", err);
