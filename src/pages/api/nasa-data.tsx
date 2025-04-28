@@ -12,7 +12,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
   // Serve from cache if valid
   if (cache && now - cache.timestamp < CACHE_TTL) {
-    console.log('Data served from CACHE >> ', cache)
+    console.log('Data served from CACHE >> ')
     return res.status(200).json(cache.data);
   }
 

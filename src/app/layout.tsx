@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import Navbar from "@/components/navigation/navbar"
-import { ThemeProvider } from "next-themes";
+import Navbar from "@/components/navigation/navbar";
 import Footer from "@/components/navigation/footer";
 
 const geistSans = Geist({
@@ -27,12 +26,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-        <ThemeProvider>
-          <Navbar/>
-          {children}
-          <Footer/>
-        </ThemeProvider>
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`} style={{ backgroundColor: "black" }}>
+        <Navbar/>
+        {children}
+        <Footer/>
       </body>
     </html>
   );
