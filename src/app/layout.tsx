@@ -16,7 +16,11 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "Aussie Stargazers",
-  description: "NASA provides the Astromony Picture of the day!",
+  description: "NASA provides the Astronomy Picture of the Day!",
+  keywords: ["astronomy", "NASA", "stargazing", "space", "Australia"],
+  authors: [{name: "tjmb", url: 'https://tjmb.dev'}],
+  viewport: "width=device-width, initial-scale=1.0",
+  themeColor: "#000000",
 };
 
 export default function RootLayout({
