@@ -7,12 +7,12 @@ let cache: { data: any; timestamp: number } | null = null;
 const CACHE_TTL = 60 * 60 * 1000; // 1 hour in milliseconds
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
-  const days = 30;
+  const days = 29;
   const now = Date.now();
 
   // Serve from cache if valid
   if (cache && now - cache.timestamp < CACHE_TTL) {
-    console.log('Data served from CACHE >> ')
+    console.log('Data served from CACHE >> ', cache)
     return res.status(200).json(cache.data);
   }
 
@@ -27,7 +27,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     const formatDate = (date: Date) => date.toISOString().split("T")[0];
 
     const response = await fetch(
-      `https://api.nasa.gov/planetary/apod?api_key=${NASA_API}&start_date=${formatDate(pastDate)}&end_date=${formatDate(yesterday)}`
+      `https://api.nasa.gov/planetary/apod?api_key=${NASA_API}&thumbs=true&start_date=${formatDate(pastDate)}&end_date=${formatDate(yesterday)}`
     );
 
     if (!response.ok) {

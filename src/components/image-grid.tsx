@@ -28,24 +28,51 @@ export function ImageGrid() {
     fetchData();
   }, []);
 
+  const loadMoreData = () => {
+    
+  }
+
   const cards = data.map((item, index) => ({
     id: index,
     content: (
       <div>
-        <p className="font-bold md:text-4xl text-xl text-white">{item.title}</p>
-        <span className="text-neutral-300">{item.date}</span>
-        <p className="font-normal text-base my-4 max-w-lg text-neutral-200">
-          {item.explanation?.length > 150
-            ? `${item.explanation.substring(0, 150)}...`
-            : item.explanation}
-        </p>
-        <p>{item.copyright ? <a href={item.url} className="underline" target="_blank">{item.copyright}</a> : ""}</p>
-        <p>{item.url ? <a href={item.url} className="underline" target="_blank">Source</a> : ""}</p>
+        {item.media_type == "video" ? (
+          <div>
+            <iframe
+              src={item.url}
+              title={item.title}
+              style={{ width: '100%', height: '400px' }}
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+            ></iframe>
+            <p className="font-bold md:text-4xl text-xl text-white">{item.title}</p>
+            <span className="text-neutral-300">{item.date}</span>
+            <p className="font-normal text-base my-4 max-w-lg text-neutral-200">
+              {item.explanation?.length > 150
+                ? `${item.explanation.substring(0, 150)}...`
+                : item.explanation}
+            </p>
+            <p>{item.copyright ? <a href={item.url} className="underline" target="_blank">Copyright: {item.copyright}</a> : ""}</p>
+            <p>{item.url ? <a href={item.url} className="underline" target="_blank">Source</a> : ""}</p>
+          </div>
+        ) : (
+          <div>
+            <p className="font-bold md:text-4xl text-xl text-white">{item.title}</p>
+            <span className="text-neutral-300">{item.date}</span>
+            <p className="font-normal text-base my-4 max-w-lg text-neutral-200">
+              {item.explanation?.length > 150
+                ? `${item.explanation.substring(0, 150)}...`
+                : item.explanation}
+            </p>
+            <p>{item.copyright ? <a href={item.url} className="underline" target="_blank">Copyright: {item.copyright}</a> : ""}</p>
+            <p>{item.url ? <a href={item.url} className="underline" target="_blank">Source</a> : ""}</p>
+          </div>
+        )}
       </div>
     ),
     className: index % 4 === 0 || index % 4 === 3 ? "md:col-span-2" : "",
-    thumbnail: item.url && item.url.trim() !== "" ? item.url : "/placeholder.jpg",
-    mediaType: item.media_type || "image",
+    thumbnail: item.url,
+    mediaType: item.media_type
   }));
 
   return (

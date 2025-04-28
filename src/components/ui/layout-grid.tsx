@@ -42,7 +42,7 @@ export const LayoutGrid = ({ cards }: { cards: Card[] }) => {
             layoutId={`card-${card.id}`}
           >
             {selected?.id === card.id && <SelectedCard selected={selected} />}
-            <ImageComponent card={card} />
+            <ImageComponent card={card} selected={selected} />
           </motion.div>
         </div>
       ))}
@@ -58,15 +58,20 @@ export const LayoutGrid = ({ cards }: { cards: Card[] }) => {
   );
 };
 
-const ImageComponent = ({ card }: { card: Card }) => {
+const ImageComponent = ({ card, selected }: { card: Card; selected: Card | null }) => {
+  const isSelected = selected?.id === card.id;
   return (
     <motion.img
       layoutId={`image-${card.id}-image`}
+      loading="lazy"
       src={card.thumbnail}
       height="500"
       width="500"
       className={cn(
-        "object-cover absolute h-full w-full rounded-2xl border border-white/70 transition duration-200"
+        isSelected
+          ? "object-contain"
+          : "object-cover",
+        "bg-black absolute h-full w-full rounded-2xl border border-white/70 transition duration-200"
       )}
       alt="thumbnail"
     />
@@ -75,7 +80,7 @@ const ImageComponent = ({ card }: { card: Card }) => {
 
 const SelectedCard = ({ selected }: { selected: Card | null }) => {
   return (
-    <div className="bg-transparent h-full w-full flex flex-col justify-end rounded-lg shadow-2xl relative z-[60]">
+    <div className="bg-transparent h-full w-full flex flex-col justify-end rounded-lg shadow-2xl relative z-[10]">
       <motion.div
         initial={{
           opacity: 0,
@@ -103,7 +108,7 @@ const SelectedCard = ({ selected }: { selected: Card | null }) => {
           duration: 0.3,
           ease: "easeInOut",
         }}
-        className="relative px-8 pb-4 z-[70]"
+        className="relative px-8 pb-4 z-[50]"
       >
         {selected?.content}
       </motion.div>

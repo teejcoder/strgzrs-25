@@ -5,7 +5,7 @@ export default function About() {
     <section>
       <div className="container mx-auto px-4">
         <div className="max-w-3xl mx-auto mb-16 text-center py-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 text-amber-400">About Aussie Stargazers</h2>
+          <h2 className="text-4xl md:text-5xl font-bold mb-6">About Aussie Stargazers</h2>
           <div className="prose prose-lg prose-invert mx-auto text-balance">
             <p className="mb-4">
                 Welcome to Aussie Stargazers, your premier destination for astronomical wonders as viewed from the great Down Under!
@@ -16,7 +16,7 @@ export default function About() {
             <p className="mb-6">
                 Whether you're gazing up at the Southern Cross from the Outback, searching for nebulae from suburban Melbourne, or tracking celestial events across the Great Barrier Reef, we're here to enhance your stargazing experience with accurate data and breathtaking visuals.
             </p>
-            <h3 className="text-2xl font-bold mt-10 mb-4 text-amber-300">What Makes Us Different</h3>
+            <h3 className="text-2xl font-bold mt-10 mb-4">What Makes Us Different</h3>
             <p className="mb-4">
                 We harness the power of NASA's renowned Astronomy Picture of the Day API to bring you a curated gallery of cosmic wonders, complete with expert explanations straight from the astronomers themselves.
             </p>
