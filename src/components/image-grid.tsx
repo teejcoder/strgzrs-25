@@ -28,10 +28,6 @@ export function ImageGrid() {
     fetchData();
   }, []);
 
-  const loadMoreData = () => {
-    
-  }
-
   const cards = data.map((item, index) => ({
     id: index,
     content: (
@@ -46,26 +42,16 @@ export function ImageGrid() {
               allowFullScreen
             ></iframe>
             <p className="font-bold md:text-4xl text-xl text-white">{item.title}</p>
-            <span className="text-neutral-300">{item.date}</span>
-            <p className="font-normal text-base my-4 max-w-lg text-neutral-200">
-              {item.explanation?.length > 150
-                ? `${item.explanation.substring(0, 150)}...`
-                : item.explanation}
-            </p>
-            <p>{item.copyright ? <a href={item.url} className="underline" target="_blank">Copyright: {item.copyright}</a> : ""}</p>
-            <p>{item.url ? <a href={item.url} className="underline" target="_blank">Source</a> : ""}</p>
+            <span className="text-sm text-neutral-300">{item.date}</span>
+            <p className="text-sm">{item.copyright ? <a href={item.url} className="underline" target="_blank">Copyright: {item.copyright}</a> : ""}</p>
+            <p className="text-sm">{item.url ? <a href={item.url} className="underline" target="_blank">Source</a> : ""}</p>
           </div>
         ) : (
           <div>
             <p className="font-bold md:text-4xl text-xl text-white">{item.title}</p>
-            <span className="text-neutral-300">{item.date}</span>
-            <p className="font-normal text-base my-4 max-w-lg text-neutral-200">
-              {item.explanation?.length > 150
-                ? `${item.explanation.substring(0, 150)}...`
-                : item.explanation}
-            </p>
-            <p>{item.copyright ? <a href={item.url} className="underline" target="_blank">Copyright: {item.copyright}</a> : ""}</p>
-            <p>{item.url ? <a href={item.url} className="underline" target="_blank">Source</a> : ""}</p>
+            <span className="text-sm text-neutral-300">{item.date}</span>
+            <p>{item.copyright ? <a href={item.url} className="underline text-sm" target="_blank">Copyright: {item.copyright}</a> : ""}</p>
+            <p>{item.url ? <a href={item.url} className="underline text-sm" target="_blank">Source</a> : ""}</p>
           </div>
         )}
       </div>

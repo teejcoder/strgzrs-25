@@ -27,7 +27,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     const formatDate = (date: Date) => date.toISOString().split("T")[0];
 
     const response = await fetch(
-      `https://api.nasa.gov/planetary/apod?api_key=${NASA_API}&thumbs=true&start_date=${formatDate(pastDate)}&end_date=${formatDate(yesterday)}`
+      `https://api.nasa.gov/planetary/apod?api_key=${NASA_API}&start_date=${formatDate(pastDate)}&end_date=${formatDate(yesterday)}`
     );
 
     if (!response.ok) {

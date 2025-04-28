@@ -9,16 +9,7 @@ export const GetData = async () => {
 
     const data = await response.json();
 
-    const processedData = Array.isArray(data)
-      ? data.map((item) => ({
-          ...item,
-          explanation: item.explanation
-            ? item.explanation.length > 1000
-              ? `${item.explanation.substring(0, 1000)}...`
-              : item.explanation
-            : "No explanation available",
-        }))
-      : [];
+    const processedData = Array.isArray(data) ? data.map((item) => ({...item})) : [];
     
     return processedData.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
   } catch(err){
