@@ -1,3 +1,4 @@
+import About from "@/components/about";
 import { ImageGrid } from "@/components/image-grid";
 import { ShootingStars } from "@/components/ui/shooting-stars"
 import { StarsBackground } from "@/components/ui/stars-background"
@@ -14,6 +15,10 @@ export default function Home() {
         <main>
           <h1>Welcome, Aussie Stargazers.</h1>
         </main>
+      </section>
+
+      <section>
+        <About/>
       </section>
       
       <section>
