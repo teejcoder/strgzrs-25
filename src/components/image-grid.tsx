@@ -57,8 +57,7 @@ export function ImageGrid() {
       </div>
     ),
     className: index % 4 === 0 || index % 4 === 3 ? "md:col-span-2" : "",
-    thumbnail: item.url,
-    mediaType: item.media_type
+    thumbnail: item.media_type == 'image' ? item.url : "/thumbnail.png",
   }));
 
   return (

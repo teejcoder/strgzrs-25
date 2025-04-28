@@ -7,7 +7,7 @@ let cache: { data: any; timestamp: number } | null = null;
 const CACHE_TTL = 60 * 60 * 1000; // 1 hour in milliseconds
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
-  const days = 29;
+  const days = 99;
   const now = Date.now();
 
   // Serve from cache if valid
