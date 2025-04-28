@@ -3,7 +3,7 @@ import { NextApiRequest, NextApiResponse } from "next";
 const NASA_API = process.env.NEXT_PUBLIC_NASA_API;
 
 // In-memory cache
-let cache: { data: any; timestamp: number } | null = null;
+let cache: { data: unknown; timestamp: number } | null = null;
 const CACHE_TTL = 60 * 60 * 1000; // 1 hour in milliseconds
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {

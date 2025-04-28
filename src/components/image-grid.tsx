@@ -3,8 +3,18 @@ import React, { useState, useEffect } from "react";
 import { LayoutGrid } from "@/components/ui/layout-grid";
 import { GetData } from "@/api/get-data";
 
+// Define the type for the data structure
+interface DataItem {
+  media_type: string;
+  url: string;
+  title: string;
+  date: string;
+  copyright?: string;
+}
+
 export function ImageGrid() {
-  const [data, setData] = useState<any[]>([]);
+  // Update the state to use the defined type
+  const [data, setData] = useState<DataItem[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
 
@@ -19,7 +29,7 @@ export function ImageGrid() {
         } else if (result.error) {
           setError(result.error);
         }
-      } catch (err) {
+      } catch {
         setError("Failed to load data.");
       } finally {
         setLoading(false);
