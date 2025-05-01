@@ -2,8 +2,8 @@
 import React, { useState, useEffect } from "react";
 import { LayoutGrid } from "@/components/ui/layout-grid";
 import { GetData } from "@/api/get-data";
+import { IconLoader } from "@tabler/icons-react";
 
-// Define the type for the data structure
 interface DataItem {
   media_type: string;
   url: string;
@@ -13,12 +13,10 @@ interface DataItem {
 }
 
 export function ImageGrid() {
-  // Update the state to use the defined type
   const [data, setData] = useState<DataItem[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
 
-  // Fetch data from the API
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -74,7 +72,8 @@ export function ImageGrid() {
     <div className="w-full pb-16">
       {loading ? (
         <div className="flex justify-center items-center min-h-[50vh]">
-          <p className="text-white">Loading astronomy pictures...</p>
+          <p className="text-white">Loading astronomy pictures</p>
+          <IconLoader className="animate-spin" />
         </div>
       ) : error ? (
         <div className="flex justify-center items-center min-h-[50vh]">
