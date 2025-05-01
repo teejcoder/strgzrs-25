@@ -1,8 +1,14 @@
+'use client'
 import React from 'react'
+import { motion } from 'motion/react';
 
-export default function About() {
+export const About = () => {
   return (
-    <section>
+    <motion.section
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      transition={{ duration: 1, ease: "easeIn" }}
+    >
       <div className="container mx-auto px-4">
         <div className="max-w-3xl mx-auto mb-16 text-center py-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-6">About Aussie Stargazers</h2>
@@ -18,6 +24,6 @@ export default function About() {
           </div>
         </div>
       </div>
-    </section>
+    </motion.section>
   )
 }
