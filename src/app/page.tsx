@@ -11,9 +11,9 @@ export default function Home() {
       />
       <ShootingStars/>
       
-      <section className="flex items-center justify-center min-h-[90vh]">
+      <section className="grid items-center content-center min-h-[90vh]">
         <main className="text-center">
-          <h1>Welcome, Aussie Stargazers.</h1>
+          <h1 className="relative -top-20">Welcome, Aussie Stargazers.</h1>
         </main>
       </section>
 

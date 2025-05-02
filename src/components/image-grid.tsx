@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import { LayoutGrid } from "@/components/ui/layout-grid";
 import { GetData } from "@/api/get-data";
 import { IconLoader } from "@tabler/icons-react";
+import { motion } from "motion/react";
 
 interface DataItem {
   media_type: string;
@@ -69,7 +70,13 @@ export function ImageGrid() {
   }));
 
   return (
-    <div className="w-full pb-16">
+    <motion.div 
+      className="w-full pb-16"
+      initial={{ opacity: 0, y: 100 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6, ease: "easeInOut" }}
+      exit={{ opacity: 0, y: 100 }}
+    >
       {loading ? (
         <div className="flex justify-center items-center min-h-[50vh]">
           <p className="text-white">Loading astronomy pictures</p>
@@ -86,6 +93,6 @@ export function ImageGrid() {
           <p className="text-white">No astronomy pictures available.</p>
         </div>
       )}
-    </div>
+    </motion.div>
   );
 }
